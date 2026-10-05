@@ -1,0 +1,721 @@
+/* ==========================================================================
+   EDIT ME: colors, fonts, and spacing all live in this one block.
+   Change these and the whole site follows.
+
+   The design is deliberately flat: no gradients, no shadows, no rounded
+   corners, no animation. Structure comes from hairline rules, alignment,
+   and type size — not from boxes. Think matchday programme, not app.
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  --color-bg: #f6f5f1;
+  --color-border: #dcdad3;
+  --color-text: #15171c;
+  --color-text-muted: #62646b;
+  /* Club colours: blue for links and headings, amber for the accent stripe. */
+  --color-accent: #1f3f8f;
+  --color-stripe: #e3a72f;
+
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial,
+    sans-serif;
+  /* Condensed display type for headings. All locally installed fonts, so the
+     site never makes a request for a web font. */
+  --font-display:
+    'Bahnschrift SemiCondensed', Bahnschrift, 'DIN Condensed',
+    'Avenir Next Condensed', 'Arial Narrow', sans-serif-condensed,
+    var(--font-sans);
+
+  --rule: 1px solid var(--color-border);
+  --rule-strong: 3px solid var(--color-text);
+  --page-width: 64rem;
+  --measure: 38rem;
+  --gutter: 1.5rem;
+}
+
+/* Dark theme. Two selectors so it works from the operating system setting on
+   its own, and from the toggle button. Keep these blocks in sync. */
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-bg: #2C0B3A;
+  --color-border: #282b33;
+  --color-text: #f1f0ec;
+  --color-text-muted: #c0c2c8;
+  --color-accent: #8eaaf0;
+  --color-stripe: #e8b44a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+
+    --color-bg: #2C0B3A;
+    --color-border: #282b33;
+    --color-text: #f1f0ec;
+    --color-text-muted: #c0c2c8;
+    --color-accent: #8eaaf0;
+    --color-stripe: #e8b44a;
+  }
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: 1rem;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--color-accent);
+  text-underline-offset: 3px;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+dl,
+dd,
+address {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+address {
+  font-style: normal;
+}
+
+abbr[title] {
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: var(--gutter);
+  translate: 0 -200%;
+  padding: 0.5rem 0.75rem;
+  border: var(--rule);
+  background: var(--color-bg);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  z-index: 2;
+}
+
+.skip-link:focus-visible {
+  translate: 0 0;
+}
+
+/* The sprite holds icon definitions only and must never take up space. */
+.sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.icon {
+  width: 1.125rem;
+  height: 1.125rem;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Small uppercase label. */
+.label {
+  color: var(--color-text-muted);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.label a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.label a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+
+.page,
+.masthead__inner,
+.footer__inner {
+  width: 100%;
+  max-width: var(--page-width);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.footer__social {
+display: flex;
+gap: 0.75rem;
+align-items: center;
+}
+ 
+.footer__social img {
+display: block;
+width: 18px;
+height: 18px;
+}
+
+.page {
+  padding-bottom: 4rem;
+}
+
+/* ==========================================================================
+   Masthead — amber stripe, crest, name, and navigation
+   ========================================================================== */
+
+.masthead {
+  border-top: 6px solid var(--color-stripe);
+  border-bottom: var(--rule);
+}
+
+.masthead__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 2rem;
+  padding-block: 0.875rem;
+}
+
+.masthead__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.masthead__nav {
+  margin-left: auto;
+}
+
+.masthead__nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+}
+
+.masthead__nav a {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.masthead__nav a:hover,
+.masthead__nav a[aria-current='page'] {
+  color: var(--color-text);
+  text-decoration: underline;
+  text-decoration-color: var(--color-stripe);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+/* ==========================================================================
+   Hero / page header
+   ========================================================================== */
+
+.hero {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 2rem;
+  padding-block: clamp(3rem, 10vh, 6rem) clamp(2.5rem, 7vh, 4.5rem);
+  border-bottom: var(--rule-strong);
+}
+
+.hero__crest {
+  display: block;
+  width: clamp(4rem, 12vw, 6rem);
+  height: auto;
+}
+
+.hero__title,
+.page-header__title {
+  max-width: 18ch;
+  margin-top: 0.75rem;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 8vw, 4.75rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 0.95;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.hero__tagline {
+  max-width: var(--measure);
+  margin-top: 1.25rem;
+  font-size: 1.125rem;
+  text-wrap: pretty;
+}
+
+.hero__meta {
+  margin-top: 1rem;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+.page-header {
+  padding-block: clamp(3rem, 10vh, 6rem) clamp(2rem, 6vh, 3.5rem);
+  border-bottom: var(--rule-strong);
+}
+
+/* ==========================================================================
+   Sections — heading in a narrow left column, content on the right
+   ========================================================================== */
+
+.section {
+  display: grid;
+  grid-template-columns: minmax(10rem, 1fr) 3fr;
+  gap: 1.5rem 3rem;
+  padding-block: 3rem;
+  border-bottom: var(--rule);
+}
+
+.section__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.section__index {
+  color: var(--color-stripe);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+}
+
+.section__body {
+  min-width: 0;
+}
+
+.section__intro {
+  max-width: var(--measure);
+  margin-bottom: 1.5rem;
+  color: var(--color-text-muted);
+}
+
+.prose {
+  max-width: var(--measure);
+}
+
+.prose p + p {
+  margin-top: 1rem;
+}
+
+.prose__lead {
+  font-size: 1.1875rem;
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+
+.more {
+  margin-top: 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+/* Generic hairline rows, shared by teams, history, and headlines. */
+.rows {
+  border-top: var(--rule);
+}
+
+.rows > li {
+  border-bottom: var(--rule);
+}
+
+/* ==========================================================================
+   Teams
+   ========================================================================== */
+
+.team {
+  display: grid;
+  grid-template-columns: 13rem 1fr auto;
+  align-items: baseline;
+  gap: 0.25rem 1.5rem;
+  padding-block: 1rem;
+}
+
+.team__name {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.team__league {
+  font-size: 0.9375rem;
+}
+
+.team__detail {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  text-align: right;
+}
+
+/* ==========================================================================
+   History timeline
+   ========================================================================== */
+
+.timeline__item {
+  display: grid;
+  grid-template-columns: 5rem 1fr;
+  align-items: baseline;
+  gap: 1.5rem;
+  padding-block: 1.125rem;
+}
+
+.timeline__year {
+  color: var(--color-accent);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.timeline__item p {
+  max-width: var(--measure);
+}
+
+/* ==========================================================================
+   Link list (fixtures & tables) — hairline rows, no cards
+   ========================================================================== */
+
+.links {
+  border-top: var(--rule);
+}
+
+.links li {
+  border-bottom: var(--rule);
+}
+
+.link {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1.125rem 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+.link__index {
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+}
+
+.link__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  min-width: 0;
+}
+
+.link__title {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.link__meta {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+.link__arrow {
+  margin-left: auto;
+  color: var(--color-text-muted);
+  /* Nudge the icon onto the title's baseline row. */
+  align-self: center;
+}
+
+.link:hover .link__title {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.link:hover .link__arrow {
+  color: var(--color-text);
+}
+
+/* ==========================================================================
+   Headlines (latest news on the home page)
+   ========================================================================== */
+
+.headline {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  align-items: baseline;
+  gap: 1.5rem;
+  padding-block: 1rem;
+}
+
+.headline__date {
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.headline__title {
+  color: var(--color-text);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.headline__title:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   News page
+   ========================================================================== */
+
+.story {
+  display: grid;
+  grid-template-columns: minmax(10rem, 1fr) 3fr;
+  gap: 0.75rem 3rem;
+  padding-block: 3rem;
+  border-bottom: var(--rule);
+}
+
+.story__date {
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.story__title {
+  margin-bottom: 1rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.625rem, 4vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.05;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+/* ==========================================================================
+   Contact
+   ========================================================================== */
+
+.contact {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  border-top: var(--rule);
+}
+
+.contact__item {
+  padding: 1rem 1.5rem 1.25rem 0;
+  border-bottom: var(--rule);
+}
+
+.contact__item dd {
+  margin-top: 0.375rem;
+  overflow-wrap: anywhere;
+}
+
+.inline-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.footer {
+  border-top: var(--rule-strong);
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+}
+
+.footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  padding-block: 1.25rem 2.5rem;
+}
+
+.footer a {
+  color: inherit;
+}
+
+/* ==========================================================================
+   Toolbar (theme toggle + copy link)
+   ========================================================================== */
+
+.toolbar {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.toolbar[hidden] {
+  display: none;
+}
+
+.toolbar__button {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: var(--rule);
+  background: var(--color-bg);
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+
+.toolbar__button:hover {
+  color: var(--color-text);
+}
+
+/* Show the sun in light mode and the moon in dark mode. Both icons live in
+   the same button so its size never shifts when the theme changes. */
+.icon--dark {
+  display: none;
+}
+
+:root[data-theme='dark'] .icon--light {
+  display: none;
+}
+
+:root[data-theme='dark'] .icon--dark {
+  display: block;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .icon--light {
+    display: none;
+  }
+
+  :root:not([data-theme='light']) .icon--dark {
+    display: block;
+  }
+}
+
+/* ==========================================================================
+   Narrow screens — everything collapses to a single column
+   ========================================================================== */
+
+@media (max-width: 48rem) {
+  .masthead__nav {
+    order: 3;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .toolbar {
+    margin-left: auto;
+  }
+
+  .section,
+  .story {
+    grid-template-columns: 1fr;
+    padding-block: 2.25rem;
+  }
+
+  .section__heading {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.75rem;
+  }
+
+  .team {
+    grid-template-columns: 1fr;
+    gap: 0.125rem;
+  }
+
+  .team__detail {
+    text-align: left;
+  }
+}
+
+@media (max-width: 30rem) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .headline,
+  .timeline__item {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+}

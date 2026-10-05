@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- EDIT ME: page title and description ----------------------------- -->
+    <title>News | St Helens Rovers Football Club</title>
+    <meta
+      name="description"
+      content="Match reports, club announcements and junior football news from St Helens Rovers Football Club."
+    />
+
+    <!-- EDIT ME: social sharing preview --------------------------------- -->
+    <meta property="og:title" content="News | St Helens Rovers Football Club" />
+    <meta
+      property="og:description"
+      content="Grassroots football in St Helens. Teams, fixtures, news and contact details."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <!-- ----------------------------------------------------------------- -->
+
+    <link rel="icon" href="favicon.png" type="image/png+xml" />
+    <link rel="stylesheet" href="styles.css" />
+    <meta name="theme-color" content="#1f3f8f" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="masthead">
+      <div class="masthead__inner">
+        <a class="masthead__brand" href="index.html">
+          <img src="assets/crest.jpg" alt="" width="28" height="32" />
+          <span>St Helens Rovers <abbr title="Football Club">FC</abbr></span>
+        </a>
+
+        <nav class="masthead__nav" aria-label="Main">
+          <ul>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#teams">Teams</a></li>
+            <li><a href="index.html#history">History</a></li>
+            <li><a href="index.html#fixtures">Fixtures &amp; tables</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="news.html" aria-current="page">News</a></li>
+          </ul>
+        </nav>
+
+        <!-- Theme + share controls. Hidden until script.js runs, so they
+             never appear as dead buttons if JavaScript is unavailable. -->
+        <div class="toolbar" hidden id="toolbar">
+          <button type="button" class="toolbar__button" id="theme-toggle">
+            <svg class="icon icon--light" aria-hidden="true">
+              <use href="#icon-sun" />
+            </svg>
+            <svg class="icon icon--dark" aria-hidden="true">
+              <use href="#icon-moon" />
+            </svg>
+            <span class="sr-only" id="theme-toggle-label">Switch theme</span>
+          </button>
+          <button type="button" class="toolbar__button" id="copy-link">
+            <svg class="icon" aria-hidden="true" id="copy-link-icon">
+              <use href="#icon-copy" />
+            </svg>
+            <span class="sr-only">Copy link to this page</span>
+          </button>
+          <span class="sr-only" role="status" id="copy-status"></span>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="page">
+      <header class="page-header">
+        <p class="label"><a href="index.html">St Helens Rovers FC</a></p>
+        <h1 class="page-header__title">Club news</h1>
+        <p class="hero__tagline">
+          Match reports, announcements and everything else happening around the
+          club. Newest stories first.
+        </p>
+      </header>
+
+      <!-- EDIT ME: news stories. Add new stories at the top: copy a whole
+           <article> block, give it a unique id, and update the date. Then
+           update the "Latest news" list on index.html to match. -->
+      <div class="news">
+        <article class="story" id="coaches-wanted" aria-labelledby="coaches-wanted-title">
+          <time class="story__date" datetime="2026-10-05">5 October 2026</time>
+          <div class="story__body prose">
+            <h2 class="story__title" id="coaches-wanted-title">Coaches Wanted: Looking for new coaches!</h2>
+            <p class="prose__lead">
+              We're always on the lookout for new and additional coaches and welcome interest from players past and present.
+            </p>
+            <p>
+              As well as general interest, our U7's team are currently looking for a coach to lead them on their journey. Email <a href="mailto:sthelensrovers@gmail.com">sthelensrovers@gmail.com</a> for more information.
+            </p>
+          </div>
+        </article>
+
+		<article class="story" id="womens-football" aria-labelledby="womens-football-title">
+          <time class="story__date" datetime="2026-10-02">2 October 2026</time>
+          <div class="story__body prose">
+            <h2 class="story__title" id="womens-football-title">Women&rsquo;s football: She Inspires and First Team welcome new players</h2>
+            <p class="prose__lead">
+              Our two women&rsquo;s sides are always happy to see new faces, whether you are new to the game or returning to it.
+            </p>
+            <p>
+              She Inspires train on Tuesdays at 8pm and play on Sundays in the LCFA She Inspires League. The Women&rsquo;s First Team train on Wednesdays at 8pm and play on Sundays in the Liverpool Women&rsquo;s League. Email <a href="mailto:sthelensrovers@gmail.com">sthelensrovers@gmail.com</a> to come along to a session.
+            </p>
+          </div>
+        </article>
+
+        <article class="story" id="mini-soccer" aria-labelledby="mini-soccer-title">
+          <time class="story__date" datetime="2026-10-02">2 October 2026</time>
+          <div class="story__body prose">
+            <h2 class="story__title" id="mini-soccer-title">Under-7s and under-8s: Friday night training at 6pm</h2>
+            <p class="prose__lead">
+              Our under-7s and under-8s train together every Friday night at 6pm.
+            </p>
+            <p>
+              Both teams play their matches on Saturdays in the Warrington Junior League. If your child would like to give it a go, email <a href="mailto:sthelensrovers@gmail.com">sthelensrovers@gmail.com</a> and we will let you know how to get started.
+            </p>
+          </div>
+        </article>
+
+        <article class="story" id="new-website" aria-labelledby="new-website-title">
+          <time class="story__date" datetime="2026-10-02">2 October 2026</time>
+          <div class="story__body prose">
+            <h2 class="story__title" id="new-website-title">Welcome to the new club website</h2>
+            <p class="prose__lead">
+              St Helens Rovers, formed in 2008, now has a home online.
+            </p>
+            <p>
+              You can find our teams, training times, links to fixtures and league tables, and how to get in touch on the <a href="index.html">home page</a>. Club news will be posted here.
+            </p>
+          </div>
+        </article>
+      </div>
+      <!-- ------------------------------------------------------------- -->
+
+      <p class="more"><a href="index.html">Back to the club home page</a></p>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__inner">
+        <p>&copy; St Helens Rovers Football Club</p>
+        <p><a href="#main">Back to top</a></p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <!-- Icon sprite. Referenced above with <use href="#icon-name" />.
+         Every icon is a 24×24 outline drawn with the current text color. -->
+    <svg class="sprite" aria-hidden="true" focusable="false">
+      <defs>
+        <symbol id="icon-arrow" viewBox="0 0 24 24">
+          <path d="M8 16 16 8" />
+          <path d="M9.5 8H16v6.5" />
+        </symbol>
+        <symbol id="icon-sun" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="4.25" />
+          <path
+            d="M12 2.5v2.25M12 19.25v2.25M4.22 4.22l1.6 1.6M18.18 18.18l1.6 1.6M2.5 12h2.25M19.25 12h2.25M4.22 19.78l1.6-1.6M18.18 5.82l1.6-1.6"
+          />
+        </symbol>
+        <symbol id="icon-moon" viewBox="0 0 24 24">
+          <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z" />
+        </symbol>
+        <symbol id="icon-copy" viewBox="0 0 24 24">
+          <rect x="9" y="9" width="11" height="11" />
+          <path d="M15 6.5V4H4v11h2.5" />
+        </symbol>
+        <symbol id="icon-check" viewBox="0 0 24 24">
+          <path d="M5 12.5 9.5 17 19 7.5" />
+        </symbol>
+      </defs>
+    </svg>
+  </body>
+</html>
