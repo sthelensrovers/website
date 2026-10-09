@@ -41,11 +41,11 @@
 :root[data-theme='dark'] {
   color-scheme: dark;
 
-  --color-bg: #2C0B3A;
-  --color-border: #282b33;
+  --color-bg: #140A1A;
+  --color-border: #32203d;
   --color-text: #f1f0ec;
   --color-text-muted: #c0c2c8;
-  --color-accent: #8eaaf0;
+  --color-accent: #a06bff;
   --color-stripe: #e8b44a;
 }
 
@@ -53,11 +53,11 @@
   :root:not([data-theme='light']) {
     color-scheme: dark;
 
-    --color-bg: #2C0B3A;
-    --color-border: #282b33;
+    --color-bg: #140A1A;
+    --color-border: #32203d;
     --color-text: #f1f0ec;
     --color-text-muted: #c0c2c8;
-    --color-accent: #8eaaf0;
+    --color-accent: #a06bff;
     --color-stripe: #e8b44a;
   }
 }
