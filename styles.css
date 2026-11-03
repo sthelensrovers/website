@@ -17,7 +17,6 @@
   /* Club colours: blue for links and headings, amber for the accent stripe. */
   --color-accent: #1f3f8f;
   --color-stripe: #e3a72f;
-  --color-section-index: #8a6500;
 
   --font-sans:
     ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial,
@@ -347,11 +346,12 @@ height: 18px;
 }
 
 .section__index {
-  color: var(--color-section-index);
+  color: var(--color-stripe);
   font-family: var(--font-sans);
-  font-size: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 700;
   font-variant-numeric: tabular-nums;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
 }
 
 .section__body {
